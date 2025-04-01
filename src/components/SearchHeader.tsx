@@ -42,7 +42,7 @@ export default function SearchHeader(props: Props) {
           <img
             src="/filter.png"
             alt="filter icon"
-            className="absolute top-1/2 -translate-y-1/2 h-[58px]"
+            className="absolute top-1/2 -translate-y-1/2 h-[58px] max-lg:hidden"
             style={{ left: "calc(100% + 5px)" }}
           />
         </div>
