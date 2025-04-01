@@ -43,7 +43,12 @@ export default function Home() {
           searchInputValue={searchInputValue}
           setSearchInputValue={setSearchInputValue}
         />
-        {countries && (
+        {loading && (
+          <div className="w-[1000px] max-w-screen p-0 mb-10 rounded-3xl text-center">
+            loading...
+          </div>
+        )}
+        {!loading && countries && (
           <CountryFilteredList
             countries={countries}
             searchInputValue={searchInputValue}
