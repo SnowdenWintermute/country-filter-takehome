@@ -12,7 +12,7 @@ export interface Currency {
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string>();
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   async function fetchCountries() {
@@ -21,13 +21,19 @@ export default function Home() {
       //   "https://restcountries.com/v3.1/region/europe"
       // );
       const countriesResponse = await fetch("/api/countries");
+      if (!(countriesResponse.status === 200)) {
+        console.log("not ok", countriesResponse.statusText);
+        setError("couldn't fetch data, please refresh the page");
+        return;
+      }
+
       const countriesJson: Country[] = await countriesResponse.json();
       console.log(countriesJson);
       setCountries(countriesJson);
       setLoading(false);
     } catch (error) {
       console.error(error);
-      setError(true);
+      setError("unknown error, try refreshing");
     }
   }
 

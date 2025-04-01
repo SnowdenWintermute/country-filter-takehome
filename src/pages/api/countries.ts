@@ -10,7 +10,10 @@ export default async function handler(
     );
     // Check if the response is successful
     if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
+      res
+        .status(500)
+        .json({ message: "Failed to fetch data from external API" });
+      return;
     }
     const data = await response.json();
 
