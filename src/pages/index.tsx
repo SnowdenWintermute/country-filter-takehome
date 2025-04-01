@@ -48,6 +48,11 @@ export default function Home() {
             loading...
           </div>
         )}
+        {error && (
+          <div className="w-[1000px] max-w-screen p-0 mb-10 rounded-3xl text-center">
+            error fetching data
+          </div>
+        )}
         {!loading && countries && (
           <CountryFilteredList
             countries={countries}
