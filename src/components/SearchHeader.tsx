@@ -17,7 +17,7 @@ export default function SearchHeader(props: Props) {
   return (
     <section
       id="header"
-      className="mb-[40px] flex flex-col pt-[22px] w-full max-w-[720px]"
+      className="mb-[40px] flex flex-col pt-[22px] w-full max-w-[720px] "
     >
       <div className="bg-slate-700 p-2 text-5xl text-zinc-300 mb-[72px] text-center drop-shadow-lg">
         <h1>Countries Info Explorer</h1>

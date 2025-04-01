@@ -19,7 +19,7 @@ export default function CountryCard(props: Props) {
           alt={country.flags.alt}
         />
       </div>
-      <ul className="h-full overflow-y-scroll">
+      <ul className="h-full overflow-y-auto w-full">
         <li>{name.official}</li>
         <li>Languages: {Object.values(country.languages).join(", ")}</li>
         <li>

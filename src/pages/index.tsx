@@ -12,35 +12,43 @@ export interface Currency {
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   async function fetchCountries() {
-    const countriesResponse = await fetch(
-      "https://restcountries.com/v3.1/region/europe"
-    );
-    const countriesJson: Country[] = await countriesResponse.json();
-    setCountries(countriesJson);
-    setLoading(false);
+    try {
+      // const countriesResponse = await fetch(
+      //   "https://restcountries.com/v3.1/region/europe"
+      // );
+      const countriesResponse = await fetch("/api/countries");
+      const countriesJson: Country[] = await countriesResponse.json();
+      console.log(countriesJson);
+      setCountries(countriesJson);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    }
   }
 
   useEffect(() => {
     fetchCountries();
   }, []);
 
-  if (loading || countries === undefined) return "loading";
-
   return (
-    <main className="bg-gray-500 h-screen w-screen">
+    <main className="bg-gray-500 h-screen w-screen text-zinc-300">
       <BgGlobes />
       <div className="w-screen max-h-screen flex flex-col items-center absolute z-10 ">
         <SearchHeader
           searchInputValue={searchInputValue}
           setSearchInputValue={setSearchInputValue}
         />
-        <CountryFilteredList
-          countries={countries}
-          searchInputValue={searchInputValue}
-        />
+        {countries && (
+          <CountryFilteredList
+            countries={countries}
+            searchInputValue={searchInputValue}
+          />
+        )}
       </div>
     </main>
   );

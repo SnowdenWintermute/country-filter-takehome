@@ -16,12 +16,12 @@ export default function CountryFilteredList(props: Props) {
 
   return (
     <section
-      className="max-w-[1000px] h-fit w-full p-0 overflow-y-scroll mb-10 rounded-3xl"
+      className="w-[1000px] max-w-screen p-0 overflow-y-scroll mb-10 rounded-3xl"
       style={{
         flex: "1 1 1px;",
       }}
     >
-      <ul className="p-[28px] w-full bg-slate-400 flex flex-wrap max-[950px]:justify-center ">
+      <ul className="p-[28px] w-full bg-slate-400 flex flex-wrap max-[948px]:justify-center ">
         {filtered.length === 0 && "No country by that name..."}
         {filtered.map((item, i) => {
           let justifySelfClass = "";
